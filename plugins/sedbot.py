@@ -179,5 +179,9 @@ class Sedbot (ISilentCommand):
                 return error(i, 'invalid parser state')
         if state != 'flags' and state != 'flags_offset':
             return error(i, 'invalid parser state at end of expression')
+       
+       if len(result) >= (512 * 8):
+           result = 'message is too long'
+       
         result.append(out)
         return result
