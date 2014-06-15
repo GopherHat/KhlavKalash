@@ -62,6 +62,8 @@ class Sedbot (ISilentCommand):
                 edited_message = edited_message.replace('\n', '')
                 self.backlog.append(
                     (backlog_user, backlog_channel, edited_message)
+            if len(edited_message)> (512 * 8) #max number of characters * max number of lines 
+                edited_message = 'Too Many Lines'
                 )
                 return "<%s> %s" % (backlog_user.split('!')[0], edited_message)
 
